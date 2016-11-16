@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="unittests-appengine-local-testing-samples:war">
+    <output-path>$PROJECT_DIR$/unittests/target</output-path>
+    <root id="archive" name="unittests-appengine-local-testing-samples-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="unittests-appengine-local-testing-samples:war exploded" />
+    </root>
+  </artifact>
+</component>

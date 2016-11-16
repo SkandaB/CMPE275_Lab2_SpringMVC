@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="managed-vms-cloudstorage:war">
+    <output-path>$PROJECT_DIR$/flexible/cloudstorage/target</output-path>
+    <root id="archive" name="managed-vms-cloudstorage-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="managed-vms-cloudstorage:war exploded" />
+    </root>
+  </artifact>
+</component>

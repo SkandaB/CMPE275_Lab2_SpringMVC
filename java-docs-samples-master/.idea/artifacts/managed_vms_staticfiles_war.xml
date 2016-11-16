@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="managed-vms-staticfiles:war">
+    <output-path>$PROJECT_DIR$/flexible/static-files/target</output-path>
+    <root id="archive" name="managed-vms-staticfiles-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="managed-vms-staticfiles:war exploded" />
+    </root>
+  </artifact>
+</component>

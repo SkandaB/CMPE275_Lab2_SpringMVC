@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="appengine-helloworld-newplugins:war">
+    <output-path>$PROJECT_DIR$/appengine/helloworld-new-plugins/target</output-path>
+    <root id="archive" name="appengine-helloworld-newplugins-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="appengine-helloworld-newplugins:war exploded" />
+    </root>
+  </artifact>
+</component>

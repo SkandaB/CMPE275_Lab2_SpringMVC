@@ -1,0 +1,4 @@
+com/example/appengine/appidentity/UrlShortenerServlet.class
+com/example/appengine/appidentity/SignForAppServlet.class
+com/example/appengine/appidentity/IdentityServlet.class
+com/example/appengine/appidentity/UrlShortener.class

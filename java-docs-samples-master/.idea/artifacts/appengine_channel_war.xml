@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="appengine-channel:war">
+    <output-path>$PROJECT_DIR$/appengine/channel/target</output-path>
+    <root id="archive" name="appengine-channel-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="appengine-channel:war exploded" />
+    </root>
+  </artifact>
+</component>

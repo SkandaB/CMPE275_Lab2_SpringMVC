@@ -1,0 +1,15 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+appengine-datastore,com.example.time.testing,FakeClock,70,37,0,0,18,9,10,5,10,5
+appengine-datastore,com.example.time,SystemClock,7,0,0,0,2,0,2,0,2,0
+appengine-datastore,com.example.appengine,GuestbookServlet,9,0,0,0,2,0,1,0,1,0
+appengine-datastore,com.example.appengine,GuestbookStrongServlet,10,0,0,0,2,0,1,0,1,0
+appengine-datastore,com.example.appengine,Greeting,0,28,0,0,0,5,0,2,0,2
+appengine-datastore,com.example.appengine,ListPeopleServlet,0,109,0,4,0,28,0,4,0,2
+appengine-datastore,com.example.appengine,AbstractGuestbook,0,52,0,2,0,16,0,4,0,3
+appengine-datastore,com.example.appengine,StartupServlet,0,164,0,4,0,69,0,5,0,3
+appengine-datastore,com.example.appengine,AutoValue_Greeting,120,22,18,2,20,9,14,3,4,3
+appengine-datastore,com.example.appengine,StatsServlet,47,0,0,0,10,0,2,0,2,0
+appengine-datastore,com.example.appengine,Guestbook,0,42,0,0,0,12,0,3,0,3
+appengine-datastore,com.example.appengine,ProjectionServlet,0,102,0,2,0,22,0,5,0,4
+appengine-datastore,com.example.appengine,AbstractGuestbookServlet,54,0,4,0,17,0,6,0,4,0
+appengine-datastore,com.example.appengine,GuestbookStrong,0,59,0,0,0,16,0,3,0,3

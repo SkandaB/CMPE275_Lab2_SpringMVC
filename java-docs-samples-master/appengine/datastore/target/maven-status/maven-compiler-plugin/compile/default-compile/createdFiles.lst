@@ -1,0 +1,15 @@
+com/example/appengine/GuestbookStrong.class
+com/example/time/SystemClock.class
+com/example/appengine/AbstractGuestbookServlet.class
+com/example/time/Clock.class
+com/example/appengine/GuestbookStrongServlet.class
+com/example/appengine/AutoValue_Greeting.class
+com/example/appengine/ListPeopleServlet.class
+com/example/appengine/AbstractGuestbook.class
+com/example/appengine/Greeting.class
+com/example/appengine/GuestbookServlet.class
+com/example/time/testing/FakeClock.class
+com/example/appengine/Guestbook.class
+com/example/appengine/ProjectionServlet.class
+com/example/appengine/StartupServlet.class
+com/example/appengine/StatsServlet.class

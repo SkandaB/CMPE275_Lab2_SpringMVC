@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="managed-vms-memcache:war">
+    <output-path>$PROJECT_DIR$/flexible/memcache/target</output-path>
+    <root id="archive" name="managed-vms-memcache-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="managed-vms-memcache:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="managed-vms-disk:war">
+    <output-path>$PROJECT_DIR$/flexible/disk/target</output-path>
+    <root id="archive" name="managed-vms-disk-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="managed-vms-disk:war exploded" />
+    </root>
+  </artifact>
+</component>

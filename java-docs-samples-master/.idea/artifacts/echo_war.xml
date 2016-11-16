@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="echo:war">
+    <output-path>$PROJECT_DIR$/appengine/endpoints-frameworks-v2/backend/target</output-path>
+    <root id="archive" name="echo-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="echo:war exploded" />
+    </root>
+  </artifact>
+</component>

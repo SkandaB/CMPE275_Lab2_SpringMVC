@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="managed-vms-cloudsql:war">
+    <output-path>$PROJECT_DIR$/flexible/cloudsql/target</output-path>
+    <root id="archive" name="managed-vms-cloudsql-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="managed-vms-cloudsql:war exploded" />
+    </root>
+  </artifact>
+</component>

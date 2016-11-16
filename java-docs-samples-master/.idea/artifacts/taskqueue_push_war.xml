@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="taskqueue-push:war">
+    <output-path>$PROJECT_DIR$/appengine/taskqueue-push/target</output-path>
+    <root id="archive" name="taskqueue-push-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="taskqueue-push:war exploded" />
+    </root>
+  </artifact>
+</component>

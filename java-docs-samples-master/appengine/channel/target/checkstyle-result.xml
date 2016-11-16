@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/Users/SkandaBhargav/Github_Repository/CMPE275/java-docs-samples-master/appengine/channel/src/main/java/com/example/appengine/channel/ChannelPresenceServlet.java">
+</file>
+<file name="/Users/SkandaBhargav/Github_Repository/CMPE275/java-docs-samples-master/appengine/channel/src/main/java/com/example/appengine/channel/Game.java">
+</file>
+<file name="/Users/SkandaBhargav/Github_Repository/CMPE275/java-docs-samples-master/appengine/channel/src/main/java/com/example/appengine/channel/GetTokenServlet.java">
+</file>
+<file name="/Users/SkandaBhargav/Github_Repository/CMPE275/java-docs-samples-master/appengine/channel/src/main/java/com/example/appengine/channel/MoveServlet.java">
+</file>
+<file name="/Users/SkandaBhargav/Github_Repository/CMPE275/java-docs-samples-master/appengine/channel/src/main/java/com/example/appengine/channel/OfyHelper.java">
+</file>
+<file name="/Users/SkandaBhargav/Github_Repository/CMPE275/java-docs-samples-master/appengine/channel/src/main/java/com/example/appengine/channel/OpenedServlet.java">
+</file>
+<file name="/Users/SkandaBhargav/Github_Repository/CMPE275/java-docs-samples-master/appengine/channel/src/main/java/com/example/appengine/channel/TicTacToeServlet.java">
+</file>
+</checkstyle>

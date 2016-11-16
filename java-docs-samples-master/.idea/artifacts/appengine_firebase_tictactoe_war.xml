@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="appengine-firebase-tictactoe:war">
+    <output-path>$PROJECT_DIR$/appengine/firebase-tictactoe/target</output-path>
+    <root id="archive" name="appengine-firebase-tictactoe-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="appengine-firebase-tictactoe:war exploded" />
+    </root>
+  </artifact>
+</component>
