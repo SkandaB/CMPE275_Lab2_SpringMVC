@@ -34,8 +34,8 @@ public class PhoneEntity {
 	
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Id
-	@Column(name = "id", length=8, unique = true, nullable = false)
-	private String id;
+	@Column(name = "ID", length=8, unique = true, nullable = false)
+	private int id;
 	
 	@Column(name = "NUMBER",unique=true,length=10)
     private String number;  // Note, phone numbers must be unique
@@ -56,10 +56,10 @@ public class PhoneEntity {
     @ManyToMany(mappedBy="phones")
     private List<UserEntity> users = new ArrayList<UserEntity>();
 	
-    public String getId() {
+    public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getNumber() {
