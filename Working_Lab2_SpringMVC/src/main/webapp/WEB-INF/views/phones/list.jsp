@@ -39,7 +39,7 @@
 					<td>${phone.id}</td>
 					<td>${phone.number}</td>
 					<td>${phone.description}</td>
-					<td>${phone.address}.street</td>
+					<td>${phone.address.street}</td>
 					<td>
 						<spring:url value="/users/${phone.id}" var="phoneUrl" />
 						<spring:url value="/users/${phone.id}/delete" var="deleteUrl" /> 

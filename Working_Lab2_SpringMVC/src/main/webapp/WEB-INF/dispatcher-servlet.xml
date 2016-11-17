@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
@@ -18,9 +16,10 @@
 
 	<!-- This allow for dispatching requests to Controllers -->
 	<mvc:annotation-driven />
-	
-	<!--  provides annotation-driven transaction management; such as when @Transactional methods are invoked -->
-	<tx:annotation-driven/>
+
+	<!-- provides annotation-driven transaction management; such as when @Transactional 
+		methods are invoked -->
+	<tx:annotation-driven />
 
 	<!-- This helps in mapping the logical view names to directly view files 
 		under a certain pre-configured directory -->
@@ -37,6 +36,8 @@
 	<!-- To validate the posted add employee form -->
 	<bean id="userFormValidator" class="edu.sjsu.cmpe275.lab2.validator.UserFormValidator" />
 
+
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<!-- This resolves messages from resource bundles for different locales -->
 	<!-- <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"> 
