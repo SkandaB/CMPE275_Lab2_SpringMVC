@@ -36,7 +36,7 @@ public class UserEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Id
 	@Column(name = "id", length=50, unique = true, nullable = false)
-	private int id;
+	private Integer id;
 
 	@Column(name = "FIRST_NAME")
 	private String firstname;
@@ -66,11 +66,11 @@ public class UserEntity {
 		this.phones = phones;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
