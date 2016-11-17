@@ -35,7 +35,7 @@ public class PhoneEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Id
 	@Column(name = "ID", length=8, unique = true, nullable = false)
-	private int id;
+	private Integer id;
 	
 	@Column(name = "NUMBER",unique=true,length=10)
     private String number;  // Note, phone numbers must be unique
@@ -53,47 +53,77 @@ public class PhoneEntity {
                            column=@Column(name="zip_code", table="address"))
     })*/
     private AddressEntity address;
+    
     @ManyToMany(mappedBy="phones")
     private List<UserEntity> users = new ArrayList<UserEntity>();
-	
-    public int getId() {
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
 		this.id = id;
 	}
+	/**
+	 * @return the number
+	 */
 	public String getNumber() {
 		return number;
 	}
+	/**
+	 * @param number the number to set
+	 */
 	public void setNumber(String number) {
 		this.number = number;
 	}
+	/**
+	 * @return the description
+	 */
 	public String getDescription() {
 		return description;
 	}
+	/**
+	 * @param description the description to set
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	/**
+	 * @return the address
+	 */
 	public AddressEntity getAddress() {
 		return address;
 	}
-	public void setAddress(AddressEntity addr) {
-		this.address = addr;
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(AddressEntity address) {
+		this.address = address;
 	}
-	
-	
+	/**
+	 * @return the users
+	 */
 	public List<UserEntity> getUsers() {
 		return users;
 	}
+	/**
+	 * @param users the users to set
+	 */
 	public void setUsers(List<UserEntity> users) {
 		this.users = users;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-        return "PhoneEntity id: " + getId() + " number: " + getNumber() +
-               " is at location " + getAddress();
-    }
+		return "PhoneEntity [id=" + id + ", number=" + number + ", description=" + description + ", address=" + address
+				+ ", users=" + users + "]";
+	}
 	
-
-
-}
+	
+    }
