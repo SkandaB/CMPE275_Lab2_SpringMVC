@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="appengine-sendgrid:war">
-    <output-path>$PROJECT_DIR$/appengine/sendgrid/target</output-path>
-    <root id="archive" name="appengine-sendgrid-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="appengine-sendgrid:war exploded" />
-    </root>
-  </artifact>
-</component>

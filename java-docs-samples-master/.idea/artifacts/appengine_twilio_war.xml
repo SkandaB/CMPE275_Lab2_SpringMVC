@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="appengine-twilio:war">
-    <output-path>$PROJECT_DIR$/appengine/twilio/target</output-path>
-    <root id="archive" name="appengine-twilio-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="appengine-twilio:war exploded" />
-    </root>
-  </artifact>
-</component>

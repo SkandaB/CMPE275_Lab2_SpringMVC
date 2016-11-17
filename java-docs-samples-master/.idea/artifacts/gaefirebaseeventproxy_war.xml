@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="gaefirebaseeventproxy:war">
-    <output-path>$PROJECT_DIR$/appengine/firebase-event-proxy/gae-firebase-event-proxy/target</output-path>
-    <root id="archive" name="gaefirebaseeventproxy-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="gaefirebaseeventproxy:war exploded" />
-    </root>
-  </artifact>
-</component>

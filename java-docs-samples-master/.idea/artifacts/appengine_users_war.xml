@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="appengine-users:war">
-    <output-path>$PROJECT_DIR$/appengine/users/target</output-path>
-    <root id="archive" name="appengine-users-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="appengine-users:war exploded" />
-    </root>
-  </artifact>
-</component>

@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="appengine-datastore-indexes-exploding:war">
-    <output-path>$PROJECT_DIR$/appengine/datastore/indexes-exploding/target</output-path>
-    <root id="archive" name="appengine-datastore-indexes-exploding-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="appengine-datastore-indexes-exploding:war exploded" />
-    </root>
-  </artifact>
-</component>

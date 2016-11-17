@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<checkstyle version="6.11.2">
-<file name="/Users/SkandaBhargav/Github_Repository/CMPE275/java-docs-samples-master/appengine/datastore/indexes/src/main/java/com/example/appengine/IndexesServlet.java">
-</file>
-<file name="/Users/SkandaBhargav/Github_Repository/CMPE275/java-docs-samples-master/appengine/datastore/indexes/src/test/java/com/example/appengine/IndexesServletTest.java">
-</file>
-</checkstyle>

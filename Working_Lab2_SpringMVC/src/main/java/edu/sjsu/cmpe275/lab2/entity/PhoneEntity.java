@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.PrePersist;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
@@ -24,6 +26,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name="PHONE_DETAILS")
+@NamedQueries({
+	@NamedQuery(name = "PhoneEntity.findAll", query = "SELECT p from PhoneEntity p")
+})
 public class PhoneEntity {
 	
 	/*@PrePersist

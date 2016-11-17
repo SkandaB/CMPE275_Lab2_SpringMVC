@@ -1,7 +1,0 @@
-com/example/appengine/channel/Game.class
-com/example/appengine/channel/OpenedServlet.class
-com/example/appengine/channel/GetTokenServlet.class
-com/example/appengine/channel/TicTacToeServlet.class
-com/example/appengine/channel/ChannelPresenceServlet.class
-com/example/appengine/channel/MoveServlet.class
-com/example/appengine/channel/OfyHelper.class

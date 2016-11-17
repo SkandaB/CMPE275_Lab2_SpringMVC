@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="managed-vms-sendgrid:war">
-    <output-path>$PROJECT_DIR$/flexible/sendgrid/target</output-path>
-    <root id="archive" name="managed-vms-sendgrid-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="managed-vms-sendgrid:war exploded" />
-    </root>
-  </artifact>
-</component>

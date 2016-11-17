@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="appengine-staticfiles:war">
-    <output-path>$PROJECT_DIR$/appengine/static-files/target</output-path>
-    <root id="archive" name="appengine-staticfiles-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="appengine-staticfiles:war exploded" />
-    </root>
-  </artifact>
-</component>

@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="taskqueue-defer-sample:war">
-    <output-path>$PROJECT_DIR$/taskqueue/deferred/target</output-path>
-    <root id="archive" name="taskqueue-defer-sample-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="taskqueue-defer-sample:war exploded" />
-    </root>
-  </artifact>
-</component>

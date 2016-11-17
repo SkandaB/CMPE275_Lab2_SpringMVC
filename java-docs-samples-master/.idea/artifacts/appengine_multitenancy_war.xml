@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="appengine-multitenancy:war">
-    <output-path>$PROJECT_DIR$/appengine/multitenancy/target</output-path>
-    <root id="archive" name="appengine-multitenancy-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="appengine-multitenancy:war exploded" />
-    </root>
-  </artifact>
-</component>

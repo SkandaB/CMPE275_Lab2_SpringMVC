@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="managed-vms-analytics:war">
-    <output-path>$PROJECT_DIR$/flexible/analytics/target</output-path>
-    <root id="archive" name="managed-vms-analytics-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="managed-vms-analytics:war exploded" />
-    </root>
-  </artifact>
-</component>

@@ -14,4 +14,7 @@ import edu.sjsu.cmpe275.lab2.entity.*;
 public interface UserSerivce {
 	public List<UserEntity> getAllUsers();
 	public void AddUser(UserEntity user);
+	/**
+	 * 
+	 */
 }
