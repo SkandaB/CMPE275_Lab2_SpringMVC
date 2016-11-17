@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.sjsu.cmpe275.lab2.entity.AddressEntity;
@@ -56,7 +57,7 @@ public class PhoneController {
 		return "phones/list";
 	}
 
-	
+
 	/**
 	 * @param id
 	 * @param model
@@ -71,6 +72,19 @@ public class PhoneController {
 		}
 		model.addAttribute("phone", pEntity);
 		return "phones/show";
+	}
+
+	@RequestMapping(value="/phonejson/{id}", method = RequestMethod.GET)
+	public @ResponseBody PhoneEntity getPhoneEntityInJSON(@PathVariable("id") int id,
+			@RequestParam String json,
+			Model model) {
+		PhoneEntity pEntity = phoneService.findById(id);
+		if (phoneService == null) {
+			model.addAttribute("css", "danger");
+			model.addAttribute("msg", "Phone not found");
+		}
+
+		return pEntity;
 	}
 
 }
