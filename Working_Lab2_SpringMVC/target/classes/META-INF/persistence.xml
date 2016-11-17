@@ -15,6 +15,7 @@
 		
 		<class>edu.sjsu.cmpe275.lab2.entity.UserEntity</class>
 		<class>edu.sjsu.cmpe275.lab2.entity.PhoneEntity</class>
+		<class>edu.sjsu.cmpe275.lab2.entity.AddressEntity</class>
 		
 	    <properties>
 	      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

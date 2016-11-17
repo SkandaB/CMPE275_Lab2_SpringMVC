@@ -26,7 +26,7 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>#ID</th>
+					<th>ID</th>
 					<th>Number</th>
 					<th>Description</th>
 					<th>Address</th>
@@ -36,19 +36,14 @@
 
 			<c:forEach var="phone" items="${phones}">
 				<tr>
+					<td>${phone.id}</td>
+					<td>${phone.number}</td>
+					<td>${phone.description}</td>
+					<td>${phone.address}.street</td>
 					<td>
-						${phone.ID}
-					</td>
-					<td>${phone.NUMBER}</td>
-					<td>${phone.DESCRIPTION}</td>
-					<td><c:forEach var="addr" items="${phone.address}" varStatus="loop">
-						${addr}
-    					<c:if test="${not loop.last}">,</c:if>
-						</c:forEach></td>
-					<td>
-						<spring:url value="/users/${phone.ID" var="phoneUrl" />
-						<spring:url value="/users/${phone.ID}/delete" var="deleteUrl" /> 
-						<spring:url value="/users/${phone.ID}/update" var="updateUrl" />
+						<spring:url value="/users/${phone.id}" var="phoneUrl" />
+						<spring:url value="/users/${phone.id}/delete" var="deleteUrl" /> 
+						<spring:url value="/users/${phone.id}/update" var="updateUrl" />
 
 						<button class="btn btn-info" onclick="location.href='${phoneUrl}'">Query</button>
 						<button class="btn btn-primary" onclick="location.href='${updateUrl}'">Update</button>

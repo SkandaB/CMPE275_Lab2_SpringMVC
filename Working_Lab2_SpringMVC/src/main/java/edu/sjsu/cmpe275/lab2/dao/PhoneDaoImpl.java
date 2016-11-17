@@ -10,12 +10,15 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import edu.sjsu.cmpe275.lab2.entity.PhoneEntity;
 
 /**
  * @author SkandaBhargav
  *
  */
+@Transactional
 public class PhoneDaoImpl implements PhoneDao {
 
 	/* (non-Javadoc)
