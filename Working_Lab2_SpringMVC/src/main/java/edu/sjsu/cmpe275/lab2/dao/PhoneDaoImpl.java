@@ -8,8 +8,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.sjsu.cmpe275.lab2.entity.PhoneEntity;
@@ -18,28 +20,50 @@ import edu.sjsu.cmpe275.lab2.entity.PhoneEntity;
  * @author SkandaBhargav
  *
  */
-@Transactional
+@Repository
 public class PhoneDaoImpl implements PhoneDao {
+	@PersistenceContext
+	private EntityManager em;
 
 	/* (non-Javadoc)
 	 * @see edu.sjsu.cmpe275.lab2.dao.PhoneDao#findAll()
 	 */
-	
-@Override
+
+	@Override
 	public List<PhoneEntity> findAll() {
-	System.out.println("***********************!!!!!!! -------- Coming till before query launch!!!");
+		System.out.println("***********************!!!!!!! -------- Coming till before query launch!!!");
 
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "Lab2_CMPE275" );
-
-		EntityManager entitymanager = emfactory.createEntityManager( );
-		 TypedQuery<PhoneEntity> query =
-				 entitymanager.createQuery("SELECT p FROM PHONE_DETAILS p", PhoneEntity.class);
-			  List<PhoneEntity> results = query.getResultList();
-			  System.out.println(query);
-			  System.out.println(results.iterator().next());
-			  System.out.println("***********************!!!!!!! -------- Coming till here!!!");
-		// TODO Auto-generated method stub
+		TypedQuery<PhoneEntity> query = em.createQuery("SELECT p FROM PhoneEntity p",PhoneEntity.class);
+		List<PhoneEntity> results = query.getResultList();
+		for (PhoneEntity c : results) {
+			System.out.println("ID = "+ c.getId() +", Number = " + c.getNumber());
+		}
 		return results;
+
+		/*EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "Lab2_CMPE275" );
+
+	EntityManager entitymanager = emfactory.createEntityManager( );
+	entitymanager.getTransaction().begin();
+	TypedQuery<PhoneEntity> query = entitymanager.createQuery("SELECT p FROM PhoneEntity p",PhoneEntity.class);
+	List<PhoneEntity> results = query.getResultList();
+	for (PhoneEntity c : results) {
+		System.out.println("ID = "+ c.getId() +"Number = " + c.getNumber());
+	}
+	entitymanager.close();
+	return results;*/
 	}
 
 }
+
+/*EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "Lab2_CMPE275" );
+
+EntityManager entitymanager = emfactory.createEntityManager( );
+entitymanager.getTransaction().begin();
+TypedQuery<PhoneEntity> query = entitymanager.createQuery("SELECT p FROM PhoneEntity p",PhoneEntity.class);
+List<PhoneEntity> results = query.getResultList();
+for (PhoneEntity c : results) {
+	System.out.println("ID = "+ c.getId() +"Number = " + c.getNumber());
+}
+entitymanager.close();
+return results;
+ */
