@@ -10,12 +10,11 @@
     </properties>
   </persistence-unit> -->
   
-  <persistence-unit name="Lab2_CMPE275">
+  <persistence-unit name="Assignment2_2756">
 			<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		
-		<class>edu.sjsu.cmpe275.lab2.entity.UserEntity</class>
-		<class>edu.sjsu.cmpe275.lab2.entity.PhoneEntity</class>
-		<class>edu.sjsu.cmpe275.lab2.entity.AddressEntity</class>
+		<class>edu.sjsu.cmpe275.lab2.Entity.User</class>
+		<class>edu.sjsu.cmpe275.lab2.Entity.Phone</class>
 		
 	    <properties>
 	      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

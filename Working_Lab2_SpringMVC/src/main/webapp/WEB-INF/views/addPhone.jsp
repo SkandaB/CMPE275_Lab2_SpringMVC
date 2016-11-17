@@ -9,12 +9,12 @@
 </head>
 <body>
     <p><font color="red">${errorMessage}</font></p>
-    <form action="/user" method="POST">
-        First Name : <input name="firstname" type="text" /> 
+    <form action="/phone" method="POST">
+        ID : <input name="id" type="text" disabled/> 
         </br>
-        Last Name : <input name="lastname" type="text" />
+        Number : <input name="number" type="text" />
         </br>
-        Title : <input name="title" type="text" />
+        Description : <input name="description" type="text" />
         </br>
         Address 
         </br>
