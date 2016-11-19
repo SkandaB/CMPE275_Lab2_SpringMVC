@@ -12,6 +12,14 @@ import edu.sjsu.cmpe275.lab2.entity.PhoneEntity;
  *
  */
 public interface PhoneService {
+	/**
+	 * @return
+	 */
 	List<PhoneEntity> findAll();
+
+	/**
+	 * @param id
+	 */
+	PhoneEntity findById(Integer id);
 
 }

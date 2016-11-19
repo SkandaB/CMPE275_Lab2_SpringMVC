@@ -18,4 +18,10 @@ import edu.sjsu.cmpe275.lab2.entity.PhoneEntity;
 public interface PhoneDao {
 	List<PhoneEntity> findAll();
 
+	/**
+	 * @param id
+	 * @return
+	 */
+	PhoneEntity findById(Integer id);
+
 }

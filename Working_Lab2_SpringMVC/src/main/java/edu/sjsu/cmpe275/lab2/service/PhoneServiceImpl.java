@@ -27,4 +27,15 @@ public class PhoneServiceImpl implements PhoneService {
 	public List<PhoneEntity> findAll() {
 		return phoneDao.findAll();
 	}
+
+	/* (non-Javadoc)
+	 * @see edu.sjsu.cmpe275.lab2.service.PhoneService#findById(int)
+	 */
+	@Override
+	@Transactional
+	public PhoneEntity findById(Integer id) {
+		// TODO Auto-generated method stub
+		return phoneDao.findById(id);
+		
+	}
 }
