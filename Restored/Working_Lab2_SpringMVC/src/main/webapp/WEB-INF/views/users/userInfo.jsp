@@ -8,7 +8,7 @@
 <title>User Info!!</title>
 </head>
 <body>
-	<script>
+	<!-- <script>
 		function deleteFunction() {
 			alert("here");
 			/*  var deleteurl = 'http://localhost:8080/user/'+${user.id};
@@ -60,7 +60,7 @@
 		    xmlhttp.send(); 
 			
 		}
-	</script>
+	</script> -->
 	
 	 <form action="/user" method="POST">
 	    ID : <input name = "ID" type = "text" value = ${user.id} disabled >

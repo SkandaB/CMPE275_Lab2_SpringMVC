@@ -5,19 +5,14 @@
  
 <html>
 <head>
-<title>Add User</title>
+<title>Add Phone</title>
 </head>
 <body>
     <p><font color="red">${errorMessage}</font></p>
-    <form action="/user" method="POST">
-        First Name : <input name="firstname" type="text" /> 
-        </br>
-        Last Name : <input name="lastname" type="text" />
-        </br>
-        Title : <input name="title" type="text" />
-        </br>
+    <form action="/phone" method="POST">
+        Number : <input name="number" type="text" />
+        Description : <input name="description" type="text" />
         Address 
-        </br>
        	City : <input name="city" type="text" />
        	State : <input name="state" type="text" />
        	Street : <input name="street" type="text" />

@@ -21,24 +21,6 @@ public class UserSerivceImpl implements UserSerivce {
 	UserDao userDao;
 
 	/* (non-Javadoc)
-	 * @see edu.sjsu.cmpe275.lab2.service.UserSerivce#getAllUsers()
-	 */
-	@Override
-	public List<UserEntity> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see edu.sjsu.cmpe275.lab2.service.UserSerivce#AddUser(edu.sjsu.cmpe275.lab2.entity.UserEntity)
-	 */
-	@Override
-	public void AddUser(UserEntity user) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
 	 * @see edu.sjsu.cmpe275.lab2.service.UserSerivce#createUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
@@ -101,6 +83,14 @@ public class UserSerivceImpl implements UserSerivce {
 
 		// TODO Auto-generated method stub
 		return userDao.updateUser(id,userEntity);
+	}
+
+	/* (non-Javadoc)
+	 * @see edu.sjsu.cmpe275.lab2.service.UserSerivce#findAll()
+	 */
+	@Override
+	public List<UserEntity> findAll() {
+		return userDao.findALl();
 	}
 
 }

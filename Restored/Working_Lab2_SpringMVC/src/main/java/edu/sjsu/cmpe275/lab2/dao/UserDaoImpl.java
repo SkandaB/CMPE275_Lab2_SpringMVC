@@ -3,6 +3,8 @@
  */
 package edu.sjsu.cmpe275.lab2.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
@@ -78,6 +80,15 @@ public class UserDaoImpl implements UserDao {
 		em.persist(uEntity);
 		System.out.println("After persist = " + em.find(UserEntity.class, id).toString());
 		return uEntity;
+	}
+
+	/* (non-Javadoc)
+	 * @see edu.sjsu.cmpe275.lab2.dao.UserDao#findALl()
+	 */
+	@Override
+	public List<UserEntity> findALl() {
+		List<UserEntity> users = (List<UserEntity>) em.createQuery("select u from UserEntity u", UserEntity.class).getResultList();
+		return users;
 	}
 
 }

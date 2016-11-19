@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,8 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import edu.sjsu.cmpe275.lab2.entity.UserEntity;
 import edu.sjsu.cmpe275.lab2.service.UserSerivce;
@@ -71,47 +70,36 @@ public class UserController {
 	}
 
 	/**
+	 * @param json
 	 * @param id
 	 * @return
-	 * @throws IOException 
-	 * @throws JsonMappingException 
-	 * @throws JsonGenerationException 
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
 	 */
-	/*@RequestMapping(value = "/user/{uid}", method = RequestMethod.GET)
-	public ModelAndView showUser(@PathVariable("uid") int id) {
-
-		UserEntity uEntity = uService.findById(id);
-		ModelAndView mv = new ModelAndView("users/userInfo");
-		mv.addObject("user", uEntity);
-		return mv;
-	}*/
-
-	@RequestMapping(value="/user/{uid}/json=true", method = RequestMethod.GET)
-	public @ResponseBody UserEntity showUserJSON(@PathVariable("uid") int id) {
-		UserEntity uEntity = uService.findById(id);
-		System.out.println("Data in JSON ****************");
-		return uEntity;
-	}
-
 	@RequestMapping(value="/user/{uid}", method = RequestMethod.GET)
-	public Object showJ(@RequestParam(value="json",required = false, defaultValue="false") String json, @PathVariable("uid") int id ) throws JsonGenerationException, JsonMappingException, IOException {
+	public Object showUser(@RequestParam(value="json",required = false, defaultValue="false") String json, @PathVariable("uid") int id ) throws JsonGenerationException, JsonMappingException, IOException {
 		UserEntity uEntity = uService.findById(id);
 		System.out.println("**************Value of Json = "+ json);
 		System.out.println("Returned from find = " + uEntity.toString());
+
 		if(json.equals("true")) {
 			System.out.println("Data in JSON ****************");
-			ObjectMapper objMapper = new ObjectMapper();
-			String toJSON = objMapper.writeValueAsString(uEntity);
-			return toJSON;
-		} else {
-			System.out.println(" **************** Returning the normal model view ****************");
-			ModelAndView mv = new ModelAndView("users/userInfo");
-			mv.addObject("user", uEntity);
+			ModelAndView mv = new ModelAndView(new MappingJackson2JsonView());
+			mv.addObject(uEntity);
 			return mv;
-		}
-		//return "error;";
+		} 
+		System.out.println(" **************** Returning the normal model view ****************");
+		ModelAndView mv = new ModelAndView("users/userInfo");
+		mv.addObject("user", uEntity);
+		return mv;
 	}
-	
+
+	/**
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/user/{uid}", method = RequestMethod.DELETE)
 	public ModelAndView deleteUser(@PathVariable("uid") int id, ModelMap model) {
 		boolean status = uService.deleteById(id);
@@ -124,6 +112,20 @@ public class UserController {
 		}
 	}	
 
+	/**
+	 * @param id
+	 * @param firstname
+	 * @param lastname
+	 * @param title
+	 * @param city
+	 * @param state
+	 * @param street
+	 * @param zip_code
+	 * @param model
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping(value = "/user/{uid}", method = RequestMethod.POST)
 	public String updateUser(@PathVariable("uid") int id,
 			@RequestParam String firstname, 
