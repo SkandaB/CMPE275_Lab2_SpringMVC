@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,8 +39,11 @@ import edu.sjsu.cmpe275.lab2.validator.PhoneFormValidator;
 @Controller
 public class PhoneController {
 	@Autowired
+	private	HttpServletResponse httpResponse;
+
+	@Autowired
 	private PhoneService pService;
-	
+
 	@Autowired
 	private UserSerivce uService;
 
@@ -75,25 +79,24 @@ public class PhoneController {
 	}
 
 	@RequestMapping(value = "/phone/{pid}", method = RequestMethod.GET)
-	public Object showPhone(@RequestParam(value="json", required = false, defaultValue="false") String json,
-							@PathVariable("pid") int id,
-							final HttpServletResponse response) {
+	public Object showPhone(@PathVariable("pid") Integer id,
+			@RequestParam("json") String json) {
 		PhoneEntity pEntity = pService.findById(id);
 		List<UserEntity> users = uService.findAll();
-		
+
 		if(null!= pEntity)
 		{
-			if(json.equals("true")) {
+			if(null != json && !StringUtils.isEmpty(json) && json.equals("true")) {
 				System.out.println("Data in JSON ****************");
 				ModelAndView mv = new ModelAndView(new MappingJackson2JsonView());
-				response.setStatus(HttpStatus.OK.value());
+				httpResponse.setStatus(HttpStatus.OK.value());
 				mv.addObject(pEntity);
 				mv.addObject(users);
 				return mv;
 			} 
 			System.out.println(" **************** Returning the normal model view ****************");
 			ModelAndView mv = new ModelAndView("phones/phoneInfo");
-			response.setStatus(HttpStatus.OK.value());
+			httpResponse.setStatus(HttpStatus.OK.value());
 			mv.addObject("phone", pEntity);
 			mv.addObject("users",users);
 			return mv;
@@ -101,17 +104,17 @@ public class PhoneController {
 		else{
 			ModelAndView modelAndView = new ModelAndView("error");
 			String noUser = "Phone " +id + " Not found";
-			response.setStatus(HttpStatus.NOT_FOUND.value());
+			httpResponse.setStatus(HttpStatus.NOT_FOUND.value());
 			modelAndView.addObject("errorMessage", noUser);
 			modelAndView.addObject("responseCode", HttpStatus.NOT_FOUND.value());
-			
+
 			return modelAndView;
 		}
-		
+
 	}
 
 	@RequestMapping(value = "/phone/{pid}", method = RequestMethod.DELETE)
-	public ModelAndView deleteUser(@PathVariable("pid") int id, Model model){
+	public ModelAndView deleteUser(@PathVariable("pid") Integer id){
 		boolean status = pService.deleteById(id);
 
 		System.out.println("Came back after deleting the phone");
@@ -119,7 +122,7 @@ public class PhoneController {
 			System.out.println("redirecting-------------");
 			ModelAndView modelAndView = new ModelAndView("phones/addPhone");
 			return modelAndView;	
-			}else{	
+		}else{	
 			System.out.println("redirecting 233-------------");
 			ModelAndView modelAndView = new ModelAndView("phones/addPhone");
 			return modelAndView;
