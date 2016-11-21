@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.sjsu.cmpe275.lab2.dao.PhoneDao;
 import edu.sjsu.cmpe275.lab2.entity.AddressEntity;
 import edu.sjsu.cmpe275.lab2.entity.PhoneEntity;
+import edu.sjsu.cmpe275.lab2.entity.UserEntity;
 /**
  * @author SkandaBhargav
  *
@@ -20,9 +21,7 @@ public class PhoneServiceImpl implements PhoneService {
 	@Autowired
 	PhoneDao phoneDao;
 
-	/* (non-Javadoc)
-	 * @see edu.sjsu.cmpe275.lab2.service.PhoneService#createUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
-	 */
+
 	@Override
 	public PhoneEntity createUser(String number, String description, String city, String state, String street,
 			String zip_code) {
@@ -64,7 +63,7 @@ public class PhoneServiceImpl implements PhoneService {
 	 */
 	@Override
 	public PhoneEntity updatePhone(Integer id, String number, String description, String city, String state,
-			String street, String zip_code) {
+			String street, String zip_code, String uids) {
 		PhoneEntity phoneEntity = new PhoneEntity();
 		AddressEntity addressEntity = new AddressEntity();
 		
@@ -78,7 +77,15 @@ public class PhoneServiceImpl implements PhoneService {
 		
 		phoneEntity.setAddress(addressEntity);
 		
-		return phoneDao.updatePhone(id,phoneEntity);
+		return phoneDao.updatePhone(id,phoneEntity,uids);
+	}
+
+	/* (non-Javadoc)
+	 * @see edu.sjsu.cmpe275.lab2.service.PhoneService#retrieveUsers(java.lang.Integer)
+	 */
+	@Override
+	public List<UserEntity> retrieveUsers(Integer id) {
+		return phoneDao.retrchecked(id);
 	} 
 
 }

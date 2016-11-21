@@ -4,6 +4,7 @@
 package edu.sjsu.cmpe275.lab2.dao;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -24,6 +25,7 @@ import edu.sjsu.cmpe275.lab2.entity.UserEntity;
  * @author SkandaBhargav
  *
  */
+@Transactional
 @Repository
 public class PhoneDaoImpl implements PhoneDao {
 	@PersistenceContext(type=PersistenceContextType.EXTENDED)
@@ -61,14 +63,32 @@ public class PhoneDaoImpl implements PhoneDao {
 	 * @see edu.sjsu.cmpe275.lab2.dao.PhoneDao#updatePhone(java.lang.Integer, edu.sjsu.cmpe275.lab2.entity.PhoneEntity)
 	 */
 	@Override
-	public PhoneEntity updatePhone(Integer id, PhoneEntity phoneEntity) {
+	public PhoneEntity updatePhone(Integer id, PhoneEntity phoneEntity, String uids) {
 		PhoneEntity pEntity = em.find(PhoneEntity.class,id);
-		
+		List<String> users = Arrays.asList(uids.split(","));
+
+
 		pEntity.setNumber(phoneEntity.getNumber());
 		pEntity.setDescription(phoneEntity.getDescription());
 		pEntity.setAddress(phoneEntity.getAddress());
-		
-		em.persist(pEntity);
+
+		for (String string : users) {
+			System.out.println(string);
+			pEntity.getUsers().add(em.find(UserEntity.class, Integer.parseInt(string)));
+			em.find(UserEntity.class, Integer.parseInt(string)).getPhones().add(pEntity);
+		}
+
+
+		em.merge(pEntity);
 		return pEntity;
+	}
+
+	/* (non-Javadoc)
+	 * @see edu.sjsu.cmpe275.lab2.dao.PhoneDao#retrchecked(java.lang.Integer)
+	 */
+	@Override
+	public List<UserEntity> retrchecked(Integer id) {
+List<UserEntity> users = em.find(PhoneEntity.class, id).getUsers();
+		return users;
 	}
 }

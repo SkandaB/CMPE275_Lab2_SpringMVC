@@ -109,13 +109,5 @@ public class PhoneEntity {
 	public void setUsers(List<UserEntity> users) {
 		this.users = users;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "PhoneEntity [id=" + id + ", number=" + number + ", description=" + description + ", address=" + address
-				+ ", users=" + users + "]";
-	}
 
 }

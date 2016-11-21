@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.sjsu.cmpe275.lab2.entity.PhoneEntity;
 import edu.sjsu.cmpe275.lab2.entity.UserEntity;
@@ -18,6 +19,7 @@ import edu.sjsu.cmpe275.lab2.entity.UserEntity;
  * @author SkandaBhargav
  *
  */
+@Transactional
 @Repository
 public class UserDaoImpl implements UserDao {
 	@PersistenceContext(type = PersistenceContextType.EXTENDED)
@@ -44,7 +46,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserEntity findById(int id) {
 		UserEntity uEntity = em.find(UserEntity.class, id);
-		System.out.println("************************* Details of the retrieved user = " + uEntity.toString());
+		//if(uEntity==null) return null;
 		return uEntity;
 	}
 
@@ -77,7 +79,7 @@ public class UserDaoImpl implements UserDao {
 		uEntity.setTitle(userEntity.getTitle());
 		uEntity.setAddress(userEntity.getAddress());
 		
-		em.persist(uEntity);
+		em.merge(uEntity);
 		System.out.println("After persist = " + em.find(UserEntity.class, id).toString());
 		return uEntity;
 	}

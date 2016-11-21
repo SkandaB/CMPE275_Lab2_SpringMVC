@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -47,7 +48,12 @@ public class PhoneController {
 		ModelAndView modelAndView = new ModelAndView("phones/addPhone");
 		return modelAndView;
 	}
-
+	@RequestMapping(value = "/phoneCreate", method = RequestMethod.GET)
+	public ModelAndView showPhoneCreation(){
+		System.out.println("in showPhoneCreation");
+		ModelAndView modelAndView = new ModelAndView("phones/addPhone");
+		return modelAndView;
+	}
 	@RequestMapping(value="/phone", method=RequestMethod.POST)
 	public void phoneCreation(
 			@RequestParam String number,
@@ -70,20 +76,38 @@ public class PhoneController {
 
 	@RequestMapping(value = "/phone/{pid}", method = RequestMethod.GET)
 	public Object showPhone(@RequestParam(value="json", required = false, defaultValue="false") String json,
-							@PathVariable("pid") int id) {
+							@PathVariable("pid") int id,
+							final HttpServletResponse response) {
 		PhoneEntity pEntity = pService.findById(id);
 		List<UserEntity> users = uService.findAll();
-		if(json.equals("true")) {
-			System.out.println("Data in JSON ****************");
-			ModelAndView mv = new ModelAndView(new MappingJackson2JsonView());
-			mv.addObject(pEntity);
+		
+		if(null!= pEntity)
+		{
+			if(json.equals("true")) {
+				System.out.println("Data in JSON ****************");
+				ModelAndView mv = new ModelAndView(new MappingJackson2JsonView());
+				response.setStatus(HttpStatus.OK.value());
+				mv.addObject(pEntity);
+				mv.addObject(users);
+				return mv;
+			} 
+			System.out.println(" **************** Returning the normal model view ****************");
+			ModelAndView mv = new ModelAndView("phones/phoneInfo");
+			response.setStatus(HttpStatus.OK.value());
+			mv.addObject("phone", pEntity);
+			mv.addObject("users",users);
 			return mv;
-		} 
-		System.out.println(" **************** Returning the normal model view ****************");
-		ModelAndView mv = new ModelAndView("phones/phoneInfo");
-		mv.addObject("phones", pEntity);
-		mv.addObject("users",users);
-		return mv;
+		}
+		else{
+			ModelAndView modelAndView = new ModelAndView("error");
+			String noUser = "Phone " +id + " Not found";
+			response.setStatus(HttpStatus.NOT_FOUND.value());
+			modelAndView.addObject("errorMessage", noUser);
+			modelAndView.addObject("responseCode", HttpStatus.NOT_FOUND.value());
+			
+			return modelAndView;
+		}
+		
 	}
 
 	@RequestMapping(value = "/phone/{pid}", method = RequestMethod.DELETE)
@@ -92,9 +116,13 @@ public class PhoneController {
 
 		System.out.println("Came back after deleting the phone");
 		if(status){
-			return new ModelAndView("http://localhost:8080/phone");
-		}else{			
-			return new ModelAndView("welcome");
+			System.out.println("redirecting-------------");
+			ModelAndView modelAndView = new ModelAndView("phones/addPhone");
+			return modelAndView;	
+			}else{	
+			System.out.println("redirecting 233-------------");
+			ModelAndView modelAndView = new ModelAndView("phones/addPhone");
+			return modelAndView;
 		}
 	}
 
@@ -106,11 +134,14 @@ public class PhoneController {
 			@RequestParam String state,
 			@RequestParam String street,
 			@RequestParam String zip_code,
+			@RequestParam String uid,
 			ModelMap model,
 			HttpServletRequest  request,
 			HttpServletResponse  response ) {
-		PhoneEntity pEntity = pService.updatePhone((Integer)id,number,description,city,state,street,zip_code);
+		System.out.println("Check the contents of returned user IDS "+uid);
+		PhoneEntity pEntity = pService.updatePhone((Integer)id,number,description,city,state,street,zip_code,uid);
 
+		List<UserEntity> checkd = pService.retrieveUsers(id);
 		/*ModelAndView modelAndView = new ModelAndView("users/userInfo");
 		modelAndView.addObject("user", uEntity);
 		return modelAndView;*/

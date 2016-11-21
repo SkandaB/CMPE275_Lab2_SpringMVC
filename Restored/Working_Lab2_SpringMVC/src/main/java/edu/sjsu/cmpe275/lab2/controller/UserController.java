@@ -8,13 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import edu.sjsu.cmpe275.lab2.entity.UserEntity;
@@ -51,7 +54,7 @@ public class UserController {
 	 * @param response
 	 */
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
-	public void userCreating(@RequestParam String firstname, 
+	public ModelAndView userCreating(@RequestParam String firstname, 
 			@RequestParam String lastname, 
 			@RequestParam String title, 
 			@RequestParam String city, 
@@ -62,11 +65,19 @@ public class UserController {
 			HttpServletRequest request,
 			HttpServletResponse response) {
 		UserEntity uEntity = uService.createUser(firstname,lastname,title,city,state,street,zip_code);
-		String redirect = "http://localhost:8080/user/"+uEntity.getId().toString();
+
+		String redr = "redirect:/user/"+uEntity.getId();
+		return new ModelAndView(new RedirectView(redr));
+
+		/*ModelAndView mv = new ModelAndView("users/userInfo");
+		mv.addObject("user", uEntity);
+		return mv;*/
+
+		/*String redirect = "http://localhost:8080/user/"+uEntity.getId().toString();
 		try{
 			response.sendRedirect(redirect);
 		}catch (Exception e) {
-		}
+		}*/
 	}
 
 	/**
@@ -77,22 +88,40 @@ public class UserController {
 	 * @throws JsonMappingException
 	 * @throws IOException
 	 */
+	@SuppressWarnings("unused")
 	@RequestMapping(value="/user/{uid}", method = RequestMethod.GET)
-	public Object showUser(@RequestParam(value="json",required = false, defaultValue="false") String json, @PathVariable("uid") int id ) throws JsonGenerationException, JsonMappingException, IOException {
+	public Object showUser(@RequestParam(value="json",required = false, defaultValue="false") String json, 
+			@PathVariable("uid") int id,
+			final HttpServletResponse response) throws JsonGenerationException, JsonMappingException, IOException {
 		UserEntity uEntity = uService.findById(id);
-		System.out.println("**************Value of Json = "+ json);
-		System.out.println("Returned from find = " + uEntity.toString());
 
-		if(json.equals("true")) {
-			System.out.println("Data in JSON ****************");
-			ModelAndView mv = new ModelAndView(new MappingJackson2JsonView());
-			mv.addObject(uEntity);
+		if(null != uEntity)
+		{
+			System.out.println("**************Value of Json = "+ json);
+			System.out.println("Returned from find = " + uEntity.toString());
+
+			if(json.equals("true")) {
+				System.out.println("Data in JSON ****************");
+				ModelAndView mv = new ModelAndView(new MappingJackson2JsonView());
+				response.setStatus(HttpStatus.OK.value());
+				mv.addObject(uEntity);
+				return mv;
+			} 
+			System.out.println(" **************** Returning the normal model view ****************");
+			ModelAndView mv = new ModelAndView("users/userInfo");
+			response.setStatus(HttpStatus.OK.value());
+			mv.addObject("user", uEntity);
 			return mv;
-		} 
-		System.out.println(" **************** Returning the normal model view ****************");
-		ModelAndView mv = new ModelAndView("users/userInfo");
-		mv.addObject("user", uEntity);
-		return mv;
+		}
+		else{
+			ModelAndView modelAndView = new ModelAndView("error");
+			String noUser = "User " +id + " Not found";
+			response.setStatus(HttpStatus.NOT_FOUND.value());
+			modelAndView.addObject("errorMessage", noUser);
+			modelAndView.addObject("responseCode", HttpStatus.NOT_FOUND.value());
+			
+			return modelAndView;
+		}
 	}
 
 	/**

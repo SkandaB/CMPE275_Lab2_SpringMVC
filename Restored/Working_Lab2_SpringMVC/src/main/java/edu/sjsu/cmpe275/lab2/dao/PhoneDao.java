@@ -41,9 +41,16 @@ public interface PhoneDao {
 	/**
 	 * @param id
 	 * @param phoneEntity
+	 * @param uids 
 	 * @return
 	 */
-	PhoneEntity updatePhone(Integer id, PhoneEntity phoneEntity);
+	PhoneEntity updatePhone(Integer id, PhoneEntity phoneEntity, String uids);
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	List<UserEntity> retrchecked(Integer id);
 	
 
 }
