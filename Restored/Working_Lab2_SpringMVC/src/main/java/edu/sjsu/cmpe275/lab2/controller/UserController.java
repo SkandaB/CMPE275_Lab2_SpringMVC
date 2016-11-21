@@ -54,7 +54,7 @@ public class UserController {
 	 * @param response
 	 */
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
-	public ModelAndView userCreating(@RequestParam String firstname, 
+	public void userCreating(@RequestParam String firstname, 
 			@RequestParam String lastname, 
 			@RequestParam String title, 
 			@RequestParam String city, 
@@ -66,18 +66,18 @@ public class UserController {
 			HttpServletResponse response) {
 		UserEntity uEntity = uService.createUser(firstname,lastname,title,city,state,street,zip_code);
 
-		String redr = "redirect:/user/"+uEntity.getId();
+		/*String redr = "redirect:/user/"+uEntity.getId();
 		return new ModelAndView(new RedirectView(redr));
-
-		/*ModelAndView mv = new ModelAndView("users/userInfo");
+*/
+	/*	ModelAndView mv = new ModelAndView("users/userInfo");
 		mv.addObject("user", uEntity);
 		return mv;*/
 
-		/*String redirect = "http://localhost:8080/user/"+uEntity.getId().toString();
+		String redirect = "http://localhost:8080/user/"+uEntity.getId().toString();
 		try{
 			response.sendRedirect(redirect);
 		}catch (Exception e) {
-		}*/
+		}
 	}
 
 	/**
