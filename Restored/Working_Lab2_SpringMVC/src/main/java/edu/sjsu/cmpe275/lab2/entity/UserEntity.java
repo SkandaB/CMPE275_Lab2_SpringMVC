@@ -116,13 +116,6 @@ public class UserEntity {
 		this.phones = list;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "UserEntity [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", title=" + title
-				+ ", address=" + address.getStreet() +address.getCity()+address.getState() + address.getZip() + ", phones=" + phones + "]";
-	}
+		
 
 }

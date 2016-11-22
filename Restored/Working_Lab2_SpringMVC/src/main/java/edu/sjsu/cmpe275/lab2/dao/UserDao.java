@@ -3,6 +3,8 @@
  */
 package edu.sjsu.cmpe275.lab2.dao;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.sjsu.cmpe275.lab2.entity.UserEntity;
@@ -36,4 +38,9 @@ public interface UserDao {
 	 * @return
 	 */
 	UserEntity updateUser(Integer id, UserEntity userEntity);
+
+	/**
+	 * @return
+	 */
+	List<UserEntity> findALl();
 }

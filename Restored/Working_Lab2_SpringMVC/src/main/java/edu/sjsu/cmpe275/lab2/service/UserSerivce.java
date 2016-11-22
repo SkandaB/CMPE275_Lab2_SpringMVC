@@ -12,8 +12,7 @@ import edu.sjsu.cmpe275.lab2.entity.*;
  *
  */
 public interface UserSerivce {
-	public List<UserEntity> getAllUsers();
-	public void AddUser(UserEntity user);
+
 	
 	/**
 	 * @param firstname
@@ -52,4 +51,9 @@ public interface UserSerivce {
 	 */
 	public UserEntity updateUser(Integer id,String firstname, String lastname, String title, String city, String state,
 			String street, String zip_code);
+
+	/**
+	 * @return
+	 */
+	public List<UserEntity> findAll();
 }
