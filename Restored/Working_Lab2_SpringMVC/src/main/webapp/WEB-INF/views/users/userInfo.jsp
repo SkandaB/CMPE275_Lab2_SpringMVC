@@ -5,8 +5,13 @@
 
 <html>
 <head>
-<title>User Info!!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Dhanya and Skanda - User page</title>
 </head>
+
 <body>
 	<script>
 		function deleteFunction() {
@@ -18,13 +23,13 @@
 			    
 			});  */
 
-			var deleteurl = "/user/${user.id}";
+			var deleteurl = "user/${user.id}";
 			var xmlhttp;
 			xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4) {
 					var baseurl = window.location.origin + window.location.pathname;
-					window.location = window.location.origin + "/user";
+					window.location = window.location.origin + "/lab2-1.0/user";
 				}
 			};
 			
@@ -56,7 +61,7 @@
 			var zip = document.getElementById("zip_code").value;
 
 			
-			var updateurl = "/user/${user.id}?firstname=" + firstname
+			var updateurl = "user/${user.id}?firstname=" + firstname
 					+ "&lastname=" + lastname + "&title=" + title + "&city="
 					+ city + "&state=" + state + "&street=" + street
 					+ "&zip_code=" + zip;
@@ -70,7 +75,7 @@
 					var baseurl = window.location.origin
 							+ window.location.pathname;
 
-					window.location = window.location.origin + "/user/${user.id}";
+					window.location = window.location.origin + "/lab2-1.0/user/${user.id}";
 				}
 
 			};
@@ -82,7 +87,7 @@
 		}
 	</script>
 
-	<form action="/user" method="POST">
+	<form action="user" method="POST">
 		ID : <input name="ID" type="text" value=${user.id } disabled>
 		</br> First Name : <input id="firstname" name="firstname" type="text"
 			value="${user.firstname}"> </br> Last Name : <input id="lastname"

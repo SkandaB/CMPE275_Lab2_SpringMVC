@@ -59,7 +59,7 @@ public class PhoneController {
 		return modelAndView;
 	}
 	@RequestMapping(value="/phone", method=RequestMethod.POST)
-	public void phoneCreation(
+	public Object phoneCreation(
 			@RequestParam String number,
 			@RequestParam String description,
 			@RequestParam String city,
@@ -69,29 +69,46 @@ public class PhoneController {
 			ModelMap model,
 			HttpServletRequest  request,
 			HttpServletResponse  response) {
+		ModelAndView mv = new ModelAndView("phones/addPhone");
+		if(number.isEmpty() || description.isEmpty() || city.isEmpty() ||
+				state.isEmpty() || street.isEmpty() || zip_code.isEmpty()){
+			mv.addObject("errorMessage", "* Please enter all the missing values");
+			return mv;
+		}
+		if(number.length()!=10 ){
+			mv.addObject("errorMessage", "* Phone Number invalid");
+			return mv;
+		}
+		if(zip_code.length()!=5){
+			mv.addObject("errorMessage", "* Zip Code invalid");
+			return mv;
+		}
 		PhoneEntity pEntity = pService.createUser(number,description,city,state,street,zip_code);
-		String redirect = "http://localhost:8080/phone/"+pEntity.getId().toString();
+		String redirect = "http://104.198.234.6/lab2-1.0/phone/"+pEntity.getId().toString();
 		try{
 			response.sendRedirect(redirect);
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
+		return null;
 	}
 
 	@RequestMapping(value = "/phone/{pid}", method = RequestMethod.GET)
 	public Object showPhone(@PathVariable("pid") Integer id,
-			@RequestParam("json") String json) {
+			@RequestParam(value="json",required = false, defaultValue="false") String json) {
 		PhoneEntity pEntity = pService.findById(id);
 		List<UserEntity> users = uService.findAll();
+		List<UserEntity> ret = pService.retrieveUsers(id);
 
 		if(null!= pEntity)
 		{
-			if(null != json && !StringUtils.isEmpty(json) && json.equals("true")) {
+			if(json.equals("true")) {
 				System.out.println("Data in JSON ****************");
 				ModelAndView mv = new ModelAndView(new MappingJackson2JsonView());
 				httpResponse.setStatus(HttpStatus.OK.value());
 				mv.addObject(pEntity);
 				mv.addObject(users);
+				mv.addObject(ret);
 				return mv;
 			} 
 			System.out.println(" **************** Returning the normal model view ****************");
@@ -99,6 +116,7 @@ public class PhoneController {
 			httpResponse.setStatus(HttpStatus.OK.value());
 			mv.addObject("phone", pEntity);
 			mv.addObject("users",users);
+			mv.addObject("ret",ret);
 			return mv;
 		}
 		else{
@@ -148,7 +166,7 @@ public class PhoneController {
 		/*ModelAndView modelAndView = new ModelAndView("users/userInfo");
 		modelAndView.addObject("user", uEntity);
 		return modelAndView;*/
-		return "httlp://localhost:8080/user/"+pEntity.getId().toString();
+		return "http://104.198.234.6/lab2-1.0/phone/"+pEntity.getId().toString();
 
 	}
 

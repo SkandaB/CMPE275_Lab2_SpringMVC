@@ -54,7 +54,7 @@ public class UserController {
 	 * @param response
 	 */
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
-	public void userCreating(@RequestParam String firstname, 
+	public Object userCreating(@RequestParam String firstname, 
 			@RequestParam String lastname, 
 			@RequestParam String title, 
 			@RequestParam String city, 
@@ -64,6 +64,16 @@ public class UserController {
 			ModelMap model,
 			HttpServletRequest request,
 			HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView("users/addUser");
+		if(firstname.isEmpty() || lastname.isEmpty() || title.isEmpty() || city.isEmpty() ||
+		state.isEmpty() || street.isEmpty() || zip_code.isEmpty()){
+		mv.addObject("errorMessage", "* Please enter all the missing values");
+		return mv;
+		}
+		if(zip_code.length()!=5){
+		mv.addObject("errorMessage", "* Zip Code invalid");
+		return mv;
+		}
 		UserEntity uEntity = uService.createUser(firstname,lastname,title,city,state,street,zip_code);
 
 		/*String redr = "redirect:/user/"+uEntity.getId();
@@ -73,11 +83,12 @@ public class UserController {
 		mv.addObject("user", uEntity);
 		return mv;*/
 
-		String redirect = "http://localhost:8080/user/"+uEntity.getId().toString();
+		String redirect = "http://104.198.234.6/lab2-1.0/user/"+uEntity.getId().toString();
 		try{
 			response.sendRedirect(redirect);
 		}catch (Exception e) {
 		}
+		return null;
 	}
 
 	/**
@@ -173,7 +184,7 @@ public class UserController {
 		/*ModelAndView modelAndView = new ModelAndView("users/userInfo");
 		modelAndView.addObject("user", uEntity);
 		return modelAndView;*/
-		return "httlp://localhost:8080/user/"+uEntity.getId().toString();
+		return "http://104.198.234.6/lab2-1.0/user/"+uEntity.getId().toString();
 
 	}
 }

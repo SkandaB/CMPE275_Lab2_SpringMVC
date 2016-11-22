@@ -9,7 +9,7 @@
 </head>
 <body>
     <p><font color="red">${errorMessage}</font></p>
-    <form action="/user" method="POST">
+    <form action="user" method="POST">
         First Name : <input name="firstname" type="text" /> 
         </br>
         Last Name : <input name="lastname" type="text" />

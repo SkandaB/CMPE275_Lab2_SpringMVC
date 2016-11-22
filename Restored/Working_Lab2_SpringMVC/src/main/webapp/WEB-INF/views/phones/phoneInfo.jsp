@@ -3,9 +3,16 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+
+
 <html>
 <head>
-<title>Yahoo!!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Dhanya And Skanda - Phone Page</title>
 </head>
 <body>
 	<script>
@@ -13,7 +20,7 @@
 
 			alert("in delete function of phone");
 
-			var deleteurl = "/phone/${phone.id}";
+			var deleteurl = "phone/${phone.id}";
 
 			var xmlhttp;
 
@@ -32,7 +39,7 @@
 					var baseurl = window.location.origin
 							+ window.location.pathname;
 
-					window.location = window.location.origin + "/phone";
+					window.location = window.location.origin + "/lab2-1.0/phone";
 				}
 
 			};
@@ -107,7 +114,7 @@
 
 		var xmlhttp;
 		alert("userIds=="+userIds);
-		var updateurl = "/phone/${phone.id}?number=" + number
+		var updateurl = "phone/${phone.id}?number=" + number
 		+ "&description=" + description + "&city=" + city
 		+ "&state=" + state + "&street=" + street + "&zip_code="
 		+ zip + "&uid=" +userIds;
@@ -120,7 +127,7 @@
 				var baseurl = window.location.origin
 						+ window.location.pathname;
 
-				window.location = window.location.origin + "/phone/${phone.id}";
+				window.location = window.location.origin + "/lab2-1.0/phone/${phone.id}";
 			}
 
 		};
@@ -130,7 +137,7 @@
 	</script>
 	
 	<form name="submitForm" method="DELETE"></form>
-	<form action="/phone" method="POST">
+	<form action="phone" method="POST">
 		ID : ${phone.id} </br> Number : <input id="number" name="number"
 			type="text" value=${phone.number}> </br> Description : <input
 			id="description" name="description" type="text"
@@ -143,7 +150,9 @@
 			value=${phone.address.zip}> </br>
 
 		<c:forEach items="${users}" var="users">
-	  <input type="checkbox" name="selectedUser" value="${users.id}" />${users.lastname},  ${users.firstname}<br>		
+		
+	  <input type="checkbox" name="selectedUser" value="${users.id}" />${users.lastname},  ${users.firstname}<br>
+	  		
 		</c:forEach>
 
 

@@ -9,7 +9,7 @@
 </head>
 <body>
     <p><font color="red">${errorMessage}</font></p>
-    <form action="/phone" method="POST">
+    <form action="phone" method="POST">
         Number : <input name="number" type="text" />
         Description : <input name="description" type="text" />
         Address 
